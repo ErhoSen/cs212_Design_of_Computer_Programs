@@ -58,6 +58,25 @@ def easy(text):
 
 # print easy('')
 
+def strategy(text):
+    result = (0,0)
+    max_dist = 0
+    i = 1
+    c = 0
+    while i<len(text):
+        current = text[i-c:i+c]
+        if is_palindrome(current):
+            print i, c
+            current_dist = (i+c) - (i-c)
+            if max_dist < (current_dist):
+                result = (i+c, i-c)
+                max_dist = current_dist
+            c+=1
+        else:
+            i+=1
+
+strategy("bb")
+
 def longest_subpalindrome_slice(text):
     "Return (i, j) such that text[i:j] is the longest palindrome in text."
     if len(text) == 0:
@@ -124,4 +143,4 @@ def test():
     assert L('Mad am I ma dam.') == (0, 15)
     return 'tests pass'
 
-print test()
+# print test()
